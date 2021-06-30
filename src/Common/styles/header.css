@@ -1,0 +1,20 @@
+.header-main {
+  background-color: #f64c72 !important;
+  padding: 1%;
+  position: sticky;
+  top: 0%;
+}
+.heading {
+  font-size: 120%;
+}
+.form-search {
+  margin: 0px 15px !important;
+}
+@media screen and (max-width: 1000px) {
+  .collapse {
+    flex-direction: column;
+  }
+  .form-search {
+    margin: 0px !important;
+  }
+}
