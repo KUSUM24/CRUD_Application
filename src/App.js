@@ -9,6 +9,8 @@ export const PostsContext = React.createContext();
 export const UserContext = React.createContext();
 export const LikedContext = React.createContext();
 export const DislikedContext = React.createContext();
+export const DeleteContext = React.createContext();
+
 function App() {
   const [postList, setPostList] = useState([]);
   const [userList, setUserList] = useState([]);
@@ -66,6 +68,22 @@ function App() {
     setDislikedList([...currentDislikedList]);
     setLikedList([...currentLikedList]);
   };
+  const handleDelete = (postId) => {
+    // fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+    //   method: "DELETE",
+    // })
+    //   .then(() => {
+    //     return fetch("https://jsonplaceholder.typicode.com/posts");
+    //   })
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     console.log(res);
+    //     setPostList(res);
+    //   });
+    // let currentPostList = postList.filter((post) => post.id != postId);
+    // console.log(currentPostList);
+    setPostList((prevList) => prevList.filter((post) => post.id != postId));
+  };
   return (
     <div className="App">
       {loading && <Loader />}
@@ -78,15 +96,17 @@ function App() {
                   <DislikedContext.Provider
                     value={{ dislikedList, handleDisliked }}
                   >
-                    <Route exact path="/">
-                      <Main />
-                    </Route>
-                    <Route path="/liked">
-                      <Liked />
-                    </Route>
-                    <Route path="/disliked">
-                      <Disliked />
-                    </Route>
+                    <DeleteContext.Provider value={handleDelete}>
+                      <Route exact path="/">
+                        <Main />
+                      </Route>
+                      <Route path="/liked">
+                        <Liked />
+                      </Route>
+                      <Route path="/disliked">
+                        <Disliked />
+                      </Route>
+                    </DeleteContext.Provider>
                   </DislikedContext.Provider>
                 </LikedContext.Provider>
               </UserContext.Provider>

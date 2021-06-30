@@ -6,17 +6,20 @@ import { ThumbDownAlt } from "@material-ui/icons";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import {
+  DeleteContext,
   DislikedContext,
   LikedContext,
   PostsContext,
   UserContext,
 } from "../../App";
+import "./styles/body.css";
 
 export const Body = ({ statusDisplay }) => {
   const postList = useContext(PostsContext);
   const userList = useContext(UserContext);
   const { likedList, handleLiked } = useContext(LikedContext);
   const { dislikedList, handleDisliked } = useContext(DislikedContext);
+  const handleDelete = useContext(DeleteContext);
   const createPost = (data) => {
     const changeLiked = (postId) => {
       handleLiked(postId);
@@ -26,8 +29,8 @@ export const Body = ({ statusDisplay }) => {
     };
     return (
       <>
-        <Card className="text-center m-2 w-75">
-          <Card.Header className="card-header">
+        <Card className="text-center m-4 w-75">
+          <Card.Header className="card-header bg-dark text-white">
             {data.id} <b>{data.title} </b>
           </Card.Header>
           <Card.Body>{data.body}</Card.Body>
@@ -52,25 +55,29 @@ export const Body = ({ statusDisplay }) => {
                 <ThumbDownAlt />
               </div>
             </div>
-            {/* {userList.map((user) => {
-              if (user.id == data.userId) {
-                return user.name;
-              }
-            })} */}
+            <b className="d-flex ">
+              By{" "}
+              <div className="mx-2" style={{ textDecoration: "underline" }}>
+                {userList.map((user) => {
+                  if (user.id == data.userId) {
+                    return user.name;
+                  }
+                })}
+              </div>
+            </b>
             <div className="d-flex">
               <div
                 className="btn text-white d-flex align-items-center"
                 style={{ backgroundColor: "#5567ff" }}
               >
                 <EditIcon />
-                {/* EDIT */}
               </div>
               <div
                 className="btn text-white d-flex align-items-center mx-2"
                 style={{ backgroundColor: "#ed0b4c" }}
+                onClick={() => handleDelete(data.id)}
               >
                 <DeleteForeverIcon />
-                {/* DELETE */}
               </div>
             </div>
           </Card.Footer>
