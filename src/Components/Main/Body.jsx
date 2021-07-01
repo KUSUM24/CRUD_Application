@@ -31,7 +31,7 @@ export const Body = ({ statusDisplay }) => {
       <>
         <Card className="text-center m-4 w-75">
           <Card.Header className="card-header bg-dark text-white">
-            {data.id} <b>{data.title} </b>
+            <b>{data.title} </b>
           </Card.Header>
           <Card.Body>{data.body}</Card.Body>
           <Card.Footer className="d-flex justify-content-between align-items-center">
@@ -66,12 +66,12 @@ export const Body = ({ statusDisplay }) => {
               </div>
             </b>
             <div className="d-flex">
-              <div
+              {/* <div
                 className="btn text-white d-flex align-items-center"
                 style={{ backgroundColor: "#5567ff" }}
               >
                 <EditIcon />
-              </div>
+              </div> */}
               <div
                 className="btn text-white d-flex align-items-center mx-2"
                 style={{ backgroundColor: "#ed0b4c" }}

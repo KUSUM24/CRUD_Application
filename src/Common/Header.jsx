@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext, useRef } from "react";
 import { Nav, Navbar, Form, FormControl, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { SearchContext } from "../App";
 import "./styles/header.css";
 
 export const Header = () => {
+  const handleSearch = useContext(SearchContext);
+  const searchRef = useRef();
   return (
     <Navbar className="header-main" expand="lg">
       <Navbar.Brand className="heading" href="/">
@@ -46,7 +49,7 @@ export const Header = () => {
             Disliked Posts
           </Link>
           <Link
-            to="/"
+            to="/CRUD_Application"
             style={{
               textDecoration: "none",
               color: "black",
@@ -60,8 +63,10 @@ export const Header = () => {
         <Form className="form-search">
           <FormControl
             type="text"
+            ref={searchRef}
             placeholder="Search Posts..."
             className="mr-sm-2"
+            onChange={() => handleSearch(searchRef.current.value)}
           />
         </Form>
       </Navbar.Collapse>
