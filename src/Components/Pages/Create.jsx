@@ -35,6 +35,8 @@ export const Create = () => {
             <Form onSubmit={(e) => handlePostDetails(e)}>
               <div className="row">
                 <div className="form-group col-md-6 ">
+                  <label>Creator Name</label>
+
                   <Form.Control
                     className="my-2"
                     placeholder="Name"
@@ -44,6 +46,7 @@ export const Create = () => {
                   />
                 </div>
                 <div className="form-group col-md-6">
+                  <label>Title</label>
                   <Form.Control
                     className="my-2"
                     placeholder="Title"
@@ -54,6 +57,8 @@ export const Create = () => {
                 </div>
               </div>
               <Form.Group>
+                <label>Body</label>
+
                 <Form.Control
                   as="textarea"
                   rows={3}

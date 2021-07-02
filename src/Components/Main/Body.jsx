@@ -10,22 +10,33 @@ import {
   DislikedContext,
   LikedContext,
   PostsContext,
+  UpdateContext,
   UserContext,
 } from "../../App";
 import "./styles/body.css";
+import { useHistory } from "react-router-dom";
 
 export const Body = ({ statusDisplay }) => {
   const postList = useContext(PostsContext);
   const userList = useContext(UserContext);
+  const handleDelete = useContext(DeleteContext);
+  const { updateName, updatePost, handleUpdate } = useContext(UpdateContext);
+
   const { likedList, handleLiked } = useContext(LikedContext);
   const { dislikedList, handleDisliked } = useContext(DislikedContext);
-  const handleDelete = useContext(DeleteContext);
+
+  const history = useHistory();
+
   const createPost = (data) => {
     const changeLiked = (postId) => {
       handleLiked(postId);
     };
     const changeDisliked = (postId) => {
       handleDisliked(postId);
+    };
+    const getUpdate = (postId) => {
+      handleUpdate(postId);
+      history.push("/update");
     };
     return (
       <>
@@ -66,12 +77,13 @@ export const Body = ({ statusDisplay }) => {
               </div>
             </b>
             <div className="d-flex">
-              {/* <div
+              <div
                 className="btn text-white d-flex align-items-center"
                 style={{ backgroundColor: "#5567ff" }}
+                onClick={() => getUpdate(data.id)}
               >
                 <EditIcon />
-              </div> */}
+              </div>
               <div
                 className="btn text-white d-flex align-items-center mx-2"
                 style={{ backgroundColor: "#ed0b4c" }}
