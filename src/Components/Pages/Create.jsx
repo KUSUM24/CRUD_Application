@@ -28,7 +28,10 @@ export const Create = () => {
           className="w-100"
           style={{ maxWidth: "800px", border: "1px solid" }}
         >
-          <Card.Header className="card-heading text-center text-white bg-dark">
+          <Card.Header
+            style={{ fontSize: "130%" }}
+            className="card-heading text-center text-white bg-dark"
+          >
             <b>Post Details</b>
           </Card.Header>
           <Card.Body>
