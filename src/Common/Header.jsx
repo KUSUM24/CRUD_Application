@@ -9,14 +9,14 @@ export const Header = () => {
   const searchRef = useRef();
   return (
     <Navbar className="header-main" expand="lg">
-      <Navbar.Brand className="heading" href="/">
+      <Navbar.Brand className="heading" href="/CRUD_Application">
         <b>CRUD Application</b>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="collapse">
         <Nav className="mr-auto">
           <Link
-            to="/create"
+            to="/CRUD_Application/create"
             style={{
               textDecoration: "none",
               color: "black",
@@ -27,7 +27,7 @@ export const Header = () => {
             Create a post
           </Link>
           <Link
-            to="/liked"
+            to="/CRUD_Application/liked"
             style={{
               textDecoration: "none",
               color: "black",
@@ -38,7 +38,7 @@ export const Header = () => {
             Liked Posts
           </Link>
           <Link
-            to="/disliked"
+            to="/CRUD_Application/disliked"
             style={{
               textDecoration: "none",
               color: "black",
