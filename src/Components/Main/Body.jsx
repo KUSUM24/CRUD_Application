@@ -40,7 +40,7 @@ export const Body = ({ statusDisplay }) => {
     return (
       <>
         <Card
-          className="text-center m-4 w-75"
+          className="text-center m-4 w-50"
           style={{ boxShadow: "5px 5px 10px rgb(131, 130, 130)" }}
         >
           <Card.Header className="card-header bg-dark text-white">
